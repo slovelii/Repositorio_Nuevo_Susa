@@ -9,21 +9,22 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- ESTILOS CSS Y TIPOGRAFÍAS ARTÍSTICAS ---
+# --- ESTILOS CSS Y TIPOGRAFÍAS ARTÍSTICAS (TEXTO BLANCO) ---
 st.markdown("""
     <style>
     /* Importar una tipografía moderna y geométrica para artistas */
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
-    /* Aplicar tipografía a toda la app */
-    html, body, [class*="css"] {
-        font-family: 'Space Grotesk', sans-serif;
+    /* Aplicar tipografía a toda la app y forzar color blanco por defecto */
+    html, body, [class*="css"], .stMarkdown, p, span, label {
+        font-family: 'Space Grotesk', sans-serif !important;
+        color: #ffffff !important;
     }
 
     /* Estilo general oscuro tipo estudio de diseño digital */
     .stApp {
         background-color: #0e1117;
-        color: #f0f2f6;
+        color: #ffffff;
     }
 
     /* Barra lateral estilizada */
@@ -32,20 +33,21 @@ st.markdown("""
         border-right: 1px solid #30363d;
     }
 
-    /* Títulos atractivos */
-    h1 {
-        color: #58a6ff;
+    /* Forzar color blanco y estilo en todos los encabezados */
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
         font-weight: 700;
         letter-spacing: -1px;
     }
     
-    h2, h3 {
-        color: #79c0ff;
+    /* Subtítulo principal con tono celeste brillante */
+    .subtitle-art {
+        color: #79c0ff !important;
     }
 
     /* Caja de retos personalizada */
     .challenge-box {
-        background: linear-gradient(135deg, #1f6feb22 0%, #23863622 100%);
+        background: linear-gradient(135deg, #1f6feb33 0%, #23863633 100%);
         border: 2px dashed #58a6ff;
         padding: 20px;
         border-radius: 12px;
@@ -56,7 +58,12 @@ st.markdown("""
     .challenge-title {
         font-size: 1.2rem;
         font-weight: 700;
-        color: #ffa657;
+        color: #ffa657 !important;
+    }
+    
+    /* Asegurar texto blanco en widgets de Streamlit (sliders, selectbox, etc.) */
+    .stSlider label, .stSelectbox label, .stColorPicker label {
+        color: #ffffff !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -79,14 +86,14 @@ if 'current_challenge' not in st.session_state:
 
 # Interfaz Principal
 st.title("⚡ SpeedSketch Studio")
-st.markdown("### *Entrena tu agilidad mental y visual con retos de dibujo rápido.*")
+st.markdown('<p class="subtitle-art" style="font-size: 1.2rem; margin-top: -10px;">Entrena tu agilidad mental y visual con retos de dibujo rápido.</p>', unsafe_allow_html=True)
 
 # Sección del Reto Actual
 st.markdown(
     f"""
     <div class="challenge-box">
         <div class="challenge-title">🎯 RETO ACTIVO:</div>
-        <h2 style="color: #f0f2f6; margin-top: 5px;">{st.session_state.current_challenge}</h2>
+        <h2 style="color: #ffffff !important; margin-top: 5px;">{st.session_state.current_challenge}</h2>
     </div>
     """,
     unsafe_allow_html=True
