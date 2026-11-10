@@ -1,3 +1,4 @@
+
 import random
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
@@ -9,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- ESTILOS CSS Y TIPOGRAFÍAS ARTÍSTICAS (TEXTO BLANCO) ---
+# --- ESTILOS CSS Y TIPOGRAFÍAS ARTÍSTICAS ---
 st.markdown("""
     <style>
     /* Importar una tipografía moderna y geométrica para artistas */
@@ -45,22 +46,39 @@ st.markdown("""
         color: #79c0ff !important;
     }
 
-    /* Caja de retos personalizada */
+    /* Banner / Caja de retos con fondo oscuro y bordes estilizados */
     .challenge-box {
-        background: linear-gradient(135deg, #1f6feb33 0%, #23863633 100%);
-        border: 2px dashed #58a6ff;
+        background-color: #161b22;
+        border: 2px solid #30363d;
         padding: 20px;
         border-radius: 12px;
         text-align: center;
         margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
     
     .challenge-title {
         font-size: 1.2rem;
         font-weight: 700;
-        color: #ffa657 !important;
+        color: #58a6ff !important;
     }
     
+    /* Personalización del botón: Azul claro para normal y hover */
+    .stButton > button {
+        background-color: #38bdf8 !important; /* Azul claro (Sky blue) */
+        color: #0f172a !important;            /* Texto oscuro para contraste perfecto */
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: 700 !important;
+        padding: 0.5rem 1rem !important;
+        transition: background-color 0.2s ease !important;
+    }
+
+    .stButton > button:hover {
+        background-color: #7dd3fc !important; /* Un azul claro un poco más brillante al pasar el cursor */
+        color: #0f172a !important;
+    }
+
     /* Asegurar texto blanco en widgets de Streamlit (sliders, selectbox, etc.) */
     .stSlider label, .stSelectbox label, .stColorPicker label {
         color: #ffffff !important;
@@ -88,7 +106,7 @@ if 'current_challenge' not in st.session_state:
 st.title("⚡ SpeedSketch Studio")
 st.markdown('<p class="subtitle-art" style="font-size: 1.2rem; margin-top: -10px;">Entrena tu agilidad mental y visual con retos de dibujo rápido.</p>', unsafe_allow_html=True)
 
-# Sección del Reto Actual
+# Sección del Reto Actual (Banner oscuro)
 st.markdown(
     f"""
     <div class="challenge-box">
